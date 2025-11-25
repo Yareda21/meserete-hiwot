@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | M.H. Sunday School</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="app-layout">
+        <header class="main-header">
+            <img src="logo.png" alt="M.H. Logo" class="header-logo">
+            <h1 class="header-title">M.H. Sunday School Attendance Control</h1>
+            <div class="header-actions">
+                <div class="language-toggle-dashboard">
+                    <span id="lang-en-dash" class="active">English</span> | <span id="lang-am-dash">አማርኛ</span>
+                </div>
+                <button class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <h2 id="dash-h2-en">Dashboard: Class Selection</h2>
+            <p id="dash-p-en">Select a class to manage attendance (የተማሪዎች ክትትል ምድብ ይምረጡ)</p>
+            
+            <div class="class-grid">
+                
+                <div class="division-card" id="infants-division">
+                    <h3 id="h3-infants">ሕፃናት ክፍል (Infants Division)</h3>
+                    <a href="class_management.html?classId=K1&className=ምድብ ቂርቆስ ፩" class="class-link">ምድብ ቂርቆስ ፩ (K1)</a>
+                    <a href="class_management.html?classId=K2&className=ምድብ ቂርቆስ ፪" class="class-link">ምድብ ቂርቆስ ፪ (K2)</a>
+                    <a href="class_management.html?classId=K3&className=ምድብ ቂርቆስ ፫" class="class-link">ምድብ ቂርቆስ ፫ (K3)</a>
+                </div>
+                
+                <div class="division-card" id="juniors-division">
+                    <h3 id="h3-juniors">ማዕከላዊያን ክፍል (Juniors Division)</h3>
+                    <a href="class_management.html?classId=S1&className=ምድብ ሳሙኤል ፩" class="class-link">ምድብ ሳሙኤል ፩ (S1)</a>
+                    <a href="class_management.html?classId=S2&className=ምድብ ሳሙኤል ፪" class="class-link">ምድብ ሳሙኤል ፪ (S2)</a>
+                    <a href="class_management.html?classId=E&className=ምድብ እስጢፋኖስ" class="class-link">ምድብ እስጢፋኖስ (E)</a>
+                </div>
+
+                <div class="division-card" id="youth-division">
+                    <h3 id="h3-youth">ወጣት ክፍል (Youth Division)</h3>
+                    <a href="class_management.html?classId=W1&className=ምድብ ቅዱስ ያሬድ ፩" class="class-link">ምድብ ቅዱስ ያሬድ ፩ (W1)</a>
+                    <a href="class_management.html?classId=W2&className=ምድብ ቅዱስ ያሬድ ፪" class="class-link">ምድብ ቅዱስ ያሬድ ፪ (W2)</a>
+                </div>
+
+                <div class="division-card" id="campus-division">
+                    <h3 id="h3-campus">ግቢ ጉባኤ (Campus Ministry)</h3>
+                    <a href="class_management.html?classId=BS&className=በሻሌ ትምህርት ቤት" class="class-link">በሻሌ ትምህርት ቤት (BS)</a>
+                    <a href="class_management.html?classId=SS&className=ሳፋሪ ትምህርት ቤት" class="class-link">ሳፋሪ ትምህርት ቤት (SS)</a>
+                </div>
+
+                <div class="division-card" id="payment-division" style="border-top: 5px solid var(--color-gold);">
+                    <h3 id="h3-payment">ክፍያ መቆጣጠሪያ (Payment Management)</h3>
+                    
+                    <div class="payment-links-group">
+                        <h4 class="payment-group-header">ሕፃናት ክፍል</h4>
+                        <a href="payment_management.html?classId=K1&className=ምድብ ቂርቆስ ፩" class="class-link payment-link" data-class-id="K1">ምድብ ቂርቆስ ፩ (K1)</a>
+                        <a href="payment_management.html?classId=K2&className=ምድብ ቂርቆስ ፪" class="class-link payment-link" data-class-id="K2">ምድብ ቂርቆስ ፪ (K2)</a>
+                        <a href="payment_management.html?classId=K3&className=ምድብ ቂርቆስ ፫" class="class-link payment-link" data-class-id="K3">ምድብ ቂርቆስ ፫ (K3)</a>
+                    </div>
+
+                    <div class="payment-links-group">
+                        <h4 class="payment-group-header">ማዕከላዊያን ክፍል</h4>
+                        <a href="payment_management.html?classId=S1&className=ምድብ ሳሙኤል ፩" class="class-link payment-link" data-class-id="S1">ምድብ ሳሙኤል ፩ (S1)</a>
+                        <a href="payment_management.html?classId=S2&className=ምድብ ሳሙኤል ፪" class="class-link payment-link" data-class-id="S2">ምድብ ሳሙኤል ፪ (S2)</a>
+                        <a href="payment_management.html?classId=E&className=ምድብ እስጢፋኖስ" class="class-link payment-link" data-class-id="E">ምድብ እስጢፋኖስ (E)</a>
+                    </div>
+                    
+                    <div class="payment-links-group">
+                        <h4 class="payment-group-header">ወጣት ክፍል</h4>
+                        <a href="payment_management.html?classId=W1&className=ምድብ ቅዱስ ያሬድ ፩" class="class-link payment-link" data-class-id="W1">ምድብ ቅዱስ ያሬድ ፩ (W1)</a>
+                        <a href="payment_management.html?classId=W2&className=ምድብ ቅዱስ ያሬድ ፪" class="class-link payment-link" data-class-id="W2">ምድብ ቅዱስ ያሬድ ፪ (W2)</a>
+                    </div>
+
+                    <div class="payment-links-group">
+                        <h4 class="payment-group-header">ግቢ ጉባኤ</h4>
+                        <a href="payment_management.html?classId=BS&className=በሻሌ ትምህርት ቤት" class="class-link payment-link" data-class-id="BS">በሻሌ ትምህርት ቤት (BS)</a>
+                        <a href="payment_management.html?classId=SS&className=ሳፋሪ ትምህርት ቤት" class="class-link payment-link" data-class-id="SS">ሳፋሪ ትምህርት ቤት (SS)</a>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. LOGOUT SCRIPT ---
+            document.querySelector('.logout-btn').onclick = function() {
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('allowedDivisions');
+                localStorage.removeItem('allowedPaymentClasses'); 
+                window.location.href = 'index.html';
+            };
+
+            // --- 2. ACCESS CONTROL: Filter Dashboard Cards (Attendance & Payment) ---
+            const userRole = localStorage.getItem('userRole');
+            const allowedDivisionsJSON = localStorage.getItem('allowedDivisions');
+            let allowedDivisions = [];
+            if (allowedDivisionsJSON) {
+                try {
+                    allowedDivisions = JSON.parse(allowedDivisionsJSON);
+                } catch (e) {
+                    console.error("Error parsing allowedDivisions from localStorage:", e);
+                }
+            }
+            
+            const allowedPaymentClassesJSON = localStorage.getItem('allowedPaymentClasses');
+            let allowedPaymentClasses = [];
+            if (allowedPaymentClassesJSON) {
+                try {
+                    allowedPaymentClasses = JSON.parse(allowedPaymentClassesJSON);
+                } catch (e) {
+                    console.error("Error parsing allowedPaymentClasses from localStorage:", e);
+                }
+            }
+
+
+            if (!userRole || allowedDivisions.length === 0) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const allDivisionCards = document.querySelectorAll('.division-card');
+            
+            allDivisionCards.forEach(card => {
+                const cardId = card.id; 
+                card.style.display = 'none';
+
+                if (allowedDivisions.includes(cardId)) {
+                    card.style.display = 'block';
+                }
+            });
+            
+            // --- 3. ACCESS CONTROL: Filter Payment Class Links within the Payment Card ---
+            const paymentDivisionCard = document.getElementById('payment-division');
+            if (paymentDivisionCard) {
+                const paymentLinks = paymentDivisionCard.querySelectorAll('.payment-link');
+                
+                paymentLinks.forEach(link => {
+                    const classId = link.getAttribute('data-class-id');
+                    
+                    if (classId && !allowedPaymentClasses.includes(classId)) {
+                        link.style.display = 'none';
+                    }
+                });
+
+                // Clean up: Hide the entire payment group container if all links inside are hidden
+                const paymentLinkGroups = paymentDivisionCard.querySelectorAll('.payment-links-group');
+                paymentLinkGroups.forEach(group => {
+                    const links = group.querySelectorAll('.payment-link');
+                    
+                    let allLinksUnderHeaderHidden = true;
+                    links.forEach(link => {
+                        if (link.style.display !== 'none') {
+                            allLinksUnderHeaderHidden = false;
+                        }
+                    });
+
+                    if (allLinksUnderHeaderHidden) {
+                        group.style.display = 'none'; 
+                    }
+                });
+            }
+            // --- END ACCESS CONTROL ---
+            
+            
+            // --- 4. DASHBOARD STYLES (Inline CSS for horizontal layout) ---
+            // This is added here to ensure the styles are applied even without a separate CSS file.
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .payment-links-group {
+                    /* Use flexbox for horizontal layout */
+                    display: flex;
+                    flex-wrap: wrap; 
+                    gap: 10px; /* Spacing between links */
+                    align-items: center;
+                    margin-top: 10px;
+                }
+                /* Style the links as buttons/pills for the horizontal layout */
+                #payment-division .payment-link {
+                    display: inline-block; 
+                    padding: 6px 12px;
+                    border: 1px solid var(--color-sapphire);
+                    border-radius: 20px;
+                    text-align: center;
+                    background-color: #e8eaf6; /* Light sapphire background */
+                    color: var(--color-sapphire); 
+                    border-left: 1px solid var(--color-sapphire) !important; 
+                    transition: background-color 0.2s, color 0.2s;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    margin-bottom: 5px; /* Add a little vertical spacing */
+                }
+                #payment-division .payment-link:hover {
+                    background-color: var(--color-sapphire);
+                    color: white;
+                    padding-left: 12px; 
+                    border-left: 1px solid var(--color-sapphire) !important; 
+                }
+                .payment-group-header {
+                    width: 100%; /* Make header take full width */
+                    margin-top: 15px;
+                    margin-bottom: 5px;
+                    color: var(--color-sapphire);
+                    font-size: 1.0rem;
+                    font-weight: 600;
+                    border-bottom: 1px dashed #ccc;
+                    padding-bottom: 3px;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            
+            // --- 5. DASHBOARD LANGUAGE SCRIPT ---
+            const langToggleEn = document.getElementById('lang-en-dash');
+            const langToggleAm = document.getElementById('lang-am-dash');
+
+            const elementsToTranslate = {
+                'dash-h2-en': { 
+                    en: 'Dashboard: Class Selection', 
+                    am: 'የዳሽቦርድ ገፅ: የክፍል ምርጫ' 
+                },
+                'dash-p-en': { 
+                    en: 'Select a class to manage attendance (የተማሪዎች ክትትል ምድብ ይምረጡ)', 
+                    am: 'የተማሪዎች ክትትል ምድብ ይምረጡ' 
+                },
+                'h3-infants': { 
+                    en: 'ሕፃናት ክፍል (Infants Division)', 
+                    am: 'ሕፃናት ክፍል' 
+                },
+                'h3-juniors': { 
+                    en: 'ማዕከላዊያን ክፍል (Juniors Division)', 
+                    am: 'ማዕከላዊያን ክፍል' 
+                },
+                'h3-youth': { 
+                    en: 'ወጣት ክፍል (Youth Division)', 
+                    am: 'ወጣት ክፍል' 
+                },
+                'h3-campus': { 
+                    en: 'ግቢ ጉባኤ (Campus Ministry)', 
+                    am: 'ግቢ ጉባኤ' 
+                },
+                'h3-payment': { 
+                    en: 'ክፍያ መቆጣጠሪያ (Payment Management)', 
+                    am: 'ክፍያ መቆጣጠሪያ' 
+                }
+            };
+            
+            function applyLanguage(lang) {
+                for (const id in elementsToTranslate) {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        if (id === 'dash-p-en' && lang === 'am') {
+                            element.textContent = elementsToTranslate[id]['am'];
+                        } else if (id === 'dash-p-en' && lang === 'en') {
+                            element.textContent = elementsToTranslate[id]['en'];
+                        } else {
+                            element.textContent = elementsToTranslate[id][lang];
+                        }
+                    }
+                }
+                
+                const paymentHeaders = document.querySelectorAll('.payment-group-header');
+                const paymentGroupTranslations = {
+                    'ሕፃናት ክፍል': { en: 'Infants Division', am: 'ሕፃናት ክፍል' },
+                    'ማዕከላዊያን ክፍል': { en: 'Juniors Division', am: 'ማዕከላዊያን ክፍል' },
+                    'ወጣት ክፍል': { en: 'Youth Division', am: 'ወጣት ክፍል' },
+                    'ግቢ ጉባኤ': { en: 'Campus Ministry', am: 'ግቢ ጉባኤ' }
+                };
+
+                paymentHeaders.forEach(header => {
+                    const originalText = header.textContent.trim();
+                    if (paymentGroupTranslations[originalText]) {
+                         header.textContent = paymentGroupTranslations[originalText][lang];
+                    }
+                });
+
+
+                langToggleEn.classList.remove('active');
+                langToggleAm.classList.remove('active');
+
+                if (lang === 'en') {
+                    langToggleEn.classList.add('active');
+                } else {
+                    langToggleAm.classList.add('active');
+                }
+            }
+
+            langToggleEn.addEventListener('click', () => applyLanguage('en'));
+            langToggleAm.addEventListener('click', () => applyLanguage('am'));
+
+            applyLanguage('en');
+        });
+    </script> 
+</body>
+</html>

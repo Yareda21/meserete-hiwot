@@ -1,0 +1,206 @@
+/* Color Palette */
+:root {
+    --color-sapphire: #1A237E;  /* Deep Sapphire */
+    --color-gold: #B8860B;      /* Muted Gold */
+    --color-cream: #F7F7FE;     /* Soft Cream/Off-White */
+    --color-text-light: #F0F0F5;
+    --color-text-dark: #333333;
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-cream);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ---------------------------------------------------- */
+/* LOGIN LAYOUT (Split Screen) */
+/* ---------------------------------------------------- */
+.login-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Branding Panel (Left Side - Deep Sapphire) */
+.branding-panel {
+    flex: 1.5;
+    background-color: var(--color-sapphire);
+    color: var(--color-text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+/* MODIFIED: Stacks contents vertically (logo on top, text on bottom) */
+.logo-area {
+    display: flex; 
+    flex-direction: column; /* Key change: Stacks items vertically */
+    align-items: center; /* Centers items horizontally */
+    gap: 15px; /* Reduced gap for stacking */
+    max-width: 80%; 
+    margin-bottom: 20px; 
+}
+
+/* --- LOGO STYLING --- */
+.logo {
+    width: 200px; 
+    height: 200px;
+    border-radius: 50%; 
+    border: 3px solid var(--color-gold);
+    object-fit: cover; 
+}
+
+/* MODIFIED: Style for the block containing the text names */
+.name-block {
+    text-align: center; /* Center the text under the logo */
+    margin-bottom: 15px;
+}
+
+.system-name {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.amharic-name {
+    font-weight: 300;
+    font-size: 1.4rem;
+    margin-bottom: 0; 
+    opacity: 0.8;
+}
+
+.slogan {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+/* Login Form Panel (Right Side - Soft Cream) */
+.login-form-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+    position: relative;
+}
+
+.form-header {
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 40px;
+}
+
+.form-header h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-sapphire);
+    margin-top: 10px;
+}
+
+/* Language Toggle Styling */
+.language-toggle {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.language-toggle span {
+    cursor: pointer;
+    padding: 3px 6px;
+    transition: color 0.3s;
+}
+
+.language-toggle .active {
+    color: var(--color-gold);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-gold);
+}
+
+/* Form Elements */
+#loginForm {
+    width: 100%;
+    max-width: 380px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-sapphire);
+    font-size: 0.95rem;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+    outline: none;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+
+.remember-me input {
+    margin-right: 10px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-gold);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn-primary:hover {
+    background-color: #a5780a; /* Slightly darker gold on hover */
+}
+
+.copyright {
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.8rem;
+    color: #999;
+}

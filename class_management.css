@@ -1,0 +1,623 @@
+/* Color Palette (Assuming these are defined in style.css or elsewhere) */
+/*
+:root {
+    --color-sapphire: #1A237E;
+    --color-gold: #B8860B;
+    --color-cream: #F7F7FE;
+    --color-text-light: #F0F0F5;
+    --color-text-dark: #333333;
+}
+*/
+
+/* Dashboard Specific Styles (Used here for consistency in the main header) */
+
+/* ---------------------------------------------------- */
+/* Class Management Layout */
+/* ---------------------------------------------------- */
+
+.main-content {
+    padding: 30px;
+}
+
+/* --- ADDED: Styling for the logo in the class management header --- */
+.header-logo-class {
+    /* *** MODIFIED: Enlarged from 40px to 60px *** */
+    width: 60px; 
+    height: 60px;
+    margin-right: 15px; /* Space between logo and title */
+    border-radius: 50%; 
+    border: 1px solid var(--color-gold); 
+}
+
+/* Date Navigation Bar */
+.date-navigation-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
+
+/* NEW: Styles for Previous/Next buttons alignment */
+.current-date-display {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.date-info-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.nav-arrow-btn {
+    border: none;
+    background: var(--color-cream);
+}
+
+.nav-arrow-btn:hover {
+    background-color: var(--color-sapphire);
+}
+
+
+.nav-btn {
+    background: none;
+    border: 1px solid var(--color-sapphire);
+    color: var(--color-sapphire);
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-btn:hover {
+    background-color: var(--color-sapphire);
+    color: white;
+}
+
+.date-display-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#current-date-gregorian {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-sapphire);
+}
+
+#current-date-amharic {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.date-picker-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+/* Action Bar and Search */
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.search-container {
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+#student-search {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-primary, .btn-secondary, .btn-tertiary {
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Ensure buttons are styled correctly */
+}
+
+.btn-primary {
+    background-color: var(--color-gold);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #a8790a; /* Slightly darker gold */
+}
+
+.btn-secondary {
+    background-color: white;
+    color: var(--color-sapphire);
+    border: 1px solid var(--color-sapphire);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-cream);
+    color: var(--color-sapphire);
+}
+
+/* New Tertiary button style for the View Toggle */
+.btn-tertiary {
+    background-color: var(--color-cream);
+    color: var(--color-sapphire);
+    border: 1px solid var(--color-sapphire);
+}
+
+.btn-tertiary:hover {
+    background-color: var(--color-sapphire);
+    color: white;
+}
+
+
+/* Attendance Table Container (Used by attendance page) */
+.attendance-table-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    overflow-x: auto; /* Ensure responsiveness for table */
+}
+
+/* --- PAYMENT TABLE STYLES (NEW) - Mirrors Attendance --- */
+/* Table Container (Used by payment page) */
+.student-table-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+    padding: 20px; /* Added padding to match the card look */
+}
+
+.student-table-card h3 {
+    color: var(--color-sapphire);
+    margin-bottom: 15px;
+}
+
+/* Payment and Attendance Table Base Styles */
+#attendance-table, .student-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#attendance-table th, #attendance-table td,
+.student-table th, .student-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+/* Payment and Attendance Table Header Styles */
+#attendance-table th, .student-table th {
+    background-color: var(--color-sapphire);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Payment and Attendance Table Row Hover */
+#attendance-table tbody tr:hover, .student-table tbody tr:hover {
+    background-color: var(--color-cream);
+}
+/* --- END PAYMENT TABLE STYLES --- */
+
+
+.student-name-link {
+    color: var(--color-text-dark);
+    font-weight: 500;
+}
+
+.student-name-link:hover {
+    color: var(--color-gold);
+    text-decoration: underline;
+}
+
+/* Checkbox styling */
+#attendance-table input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    background-color: #f0f0f0;
+}
+
+#attendance-table input[type="checkbox"]:checked {
+    background-color: var(--color-sapphire);
+    border-color: var(--color-sapphire);
+}
+
+#attendance-table input[type="checkbox"]:checked::after {
+    content: '\f00c'; /* Font Awesome checkmark icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+}
+
+/* --- Attendance Summary Table Styling (NEW) --- */
+.summary-table-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+
+.summary-title {
+    color: var(--color-sapphire);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #eee;
+    font-size: 1.5rem;
+}
+
+.summary-toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.summary-table-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+    /* Added fixed height to make the table scrollable vertically if large */
+    max-height: 70vh; 
+}
+
+#summary-table {
+    width: 100%;
+    min-width: 800px; /* Ensure a minimum width for many date columns */
+    border-collapse: collapse;
+}
+
+#summary-table th, #summary-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    white-space: nowrap; /* Prevent date headers from wrapping */
+}
+
+#summary-table thead th {
+    background-color: var(--color-sapphire);
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 2; /* Keep headers above the scrolling content */
+}
+
+/* Styling for the fixed columns (ID and Name) */
+#summary-table .sticky-col {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    text-align: left;
+    z-index: 3; /* Keep sticky columns above everything else */
+    box-shadow: 2px 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the fixed column header has the background color */
+#summary-table thead .sticky-col {
+    background-color: var(--color-sapphire);
+    color: white;
+}
+
+/* Attendance Status Colors */
+.status-present {
+    color: green;
+    font-weight: 700;
+}
+
+.status-absent {
+    color: red;
+    font-weight: 700;
+}
+
+.status-no-record {
+    color: #ccc;
+}
+
+.total-absences {
+    background-color: var(--color-cream);
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+/* Modal Styling (Re-using generic styles from dashboard) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    max-width: 600px; /* Default max width */
+}
+
+.modal-content h2 {
+    color: var(--color-sapphire);
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--color-sapphire);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Calendar Widget Specific Styles */
+#eth-calendar-widget {
+    padding: 10px;
+}
+
+.cal-header .day-name {
+    color: var(--color-sapphire) !important;
+}
+
+.cal-number.today {
+    border: 2px solid var(--color-gold) !important;
+    background-color: transparent !important;
+    color: var(--color-text-dark) !important;
+}     
+
+
+/* ---------------------------------------------------- */
+/* --- CUSTOM FIXES FOR LANGUAGE TOGGLE AND BUTTONS --- */
+/* ---------------------------------------------------- */
+
+/* LANGUAGE TOGGLE STYLING for Class Management Header */
+.language-toggle-class {
+    display: flex;
+    align-items: center; 
+    font-size: 0.9rem;
+    color: var(--color-text-light); 
+    margin-right: 20px; 
+    opacity: 0.9;
+}
+
+.language-toggle-class span {
+    cursor: pointer; 
+    padding: 3px 6px;
+    transition: color 0.3s;
+}
+
+.language-toggle-class .active {
+    color: var(--color-gold);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-gold);
+    opacity: 1;
+}
+
+/* BACK TO DASHBOARD BUTTON COLOR CHANGE */
+#back-to-dashboard-btn {
+    background-color: var(--color-cream); 
+    color: var(--color-sapphire);
+    border: 1px solid var(--color-cream);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#back-to-dashboard-btn:hover {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------------------------------- */
+/* --- ATTENDANCE ANALYTICS STYLING (NEW ADDITION) --- */
+/* ---------------------------------------------------- */
+
+.analytics-grid, .student-grid {
+    display: grid;
+    /* Use grid to force table/card on the top wide area */
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* Force the first element (the table) to span all columns */
+.student-grid > :first-child {
+    grid-column: 1 / 4;
+}
+
+.analytics-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    /* Default border */
+    border-top: 5px solid var(--color-gold); 
+}
+
+.student-ranking-card {
+    /* Different border for distinction */
+    border-top: 5px solid var(--color-sapphire);
+}
+
+.analytics-card h3 {
+    color: var(--color-sapphire);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.big-metric {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.ranking-list {
+    list-style: none;
+    padding: 0;
+}
+
+.ranking-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    color: var(--color-text-dark);
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ranking-list li:last-child {
+    border-bottom: none;
+}
+
+.ranking-count {
+    font-weight: 700;
+    color: var(--color-sapphire);
+}
+
+.chart-card {
+    /* Takes up all three columns */
+    grid-column: 1 / 4; 
+    border-top: 5px solid #E91E63; /* Use a distinct color for the chart placeholder */
+}
+
+#attendance-trend-placeholder {
+    height: 200px; 
+    background-color: #f0f0f5; 
+    padding: 10px; 
+    border-radius: 6px; 
+    text-align: center; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: #888;
+    font-style: italic;
+}
+
+/* NEW FIX: Style for Mark Paid/Unpaid button */
+.btn-toggle-payment {
+    background-color: var(--color-sapphire); 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem; /* 14.4px */
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-toggle-payment:hover {
+    background-color: #1a237e; /* Darker sapphire on hover */
+}
+
+/* Style for when the button state is 'paid' (e.g., button says 'Mark Unpaid') */
+.btn-toggle-payment[data-is-paid="true"] {
+    background-color: var(--color-gold); 
+    color: white;
+}
+
+.btn-toggle-payment[data-is-paid="true"]:hover {
+    background-color: #a8790a; /* Darker gold on hover */
+}
+/* END button style fix */
+
+
+/* NEW FIX: All Payments Summary Modal and Text Size */
+#all-payments-modal .modal-content {
+    max-width: 90%; /* Much wider for the table */
+    width: auto;
+}
+
+#all-payments-summary-content {
+    overflow-x: auto; /* Enable horizontal scroll for table */
+}
+
+#all-payments-summary-content table th, 
+#all-payments-summary-content table td {
+    font-size: 0.95rem; /* Medium size: 15.2px */
+    padding: 8px 6px; 
+}
+/* END summary fix */
+
+/* Payment Status Tags */
+.payment-status-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.payment-status-tag.paid {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.payment-status-tag.unpaid {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.center-align {
+    text-align: center;
+}

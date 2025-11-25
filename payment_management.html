@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Payments | K1</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="class_management.css"> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="app-layout">
+        <header class="main-header">
+            <img src="logo.png" alt="M.H. Logo" class="header-logo-class">
+            <h1 class="header-title" id="class-header-title">Class Payments: ምድብ...</h1>
+            <div class="header-actions">
+                <div class="language-toggle-dashboard">
+                    <span id="lang-en-pay" class="active">English</span> | <span id="lang-am-pay">አማርኛ</span>
+                </div>
+            </div>
+            </header>
+
+        <main class="main-content">
+            <div class="date-navigation-bar">
+                <button class="nav-btn" id="backToDashboardBtn"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
+                
+                <div class="current-date-display">
+                    <button class="nav-btn nav-arrow-btn" id="btn-prev-month"><i class="fas fa-chevron-left"></i> Previous</button>
+                    
+                    <div class="date-info-group">
+                        <span class="label">Payment Month:</span>
+                        <span class="big-date" id="current-month-display"></span>
+                        <button class="nav-btn" id="btn-select-month"><i class="fas fa-calendar-alt"></i> Select Month</button>
+                    </div>
+
+                    <button class="nav-btn nav-arrow-btn" id="btn-next-month">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <button class="nav-btn btn-summary" id="btn-show-all-payments" style="background-color: var(--color-gold); color: white; border-color: var(--color-gold);">
+                    All Payments <i class="fas fa-money-check-alt"></i>
+                </button>
+            </div>
+
+            <div class="student-grid">
+                
+                <div class="student-table-card">
+                    <h3>Student Payment List (Monthly)</h3>
+                    <table class="student-table" id="payment-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th class="center-align">Payment Status</th>
+                                <th class="center-align">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-list-body">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Total Students</h3>
+                    <p class="big-metric" id="total-students-count">0</p>
+                </div>
+
+                <div class="analytics-card student-ranking-card">
+                    <h3>Students Paid (This Month)</h3>
+                    <p class="big-metric" id="paid-students-count">0</p>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Payment Status</h3>
+                    <p class="big-metric" id="payment-rate">0%</p>
+                </div>
+
+            </div>
+            
+            <div id="month-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn-month close-btn">&times;</span> 
+                    <h2>Select Payment Month</h2>
+                    <input type="month" id="month-picker" class="date-input-gc">
+                    <button id="btn-set-month" class="btn-primary" style="margin-top: 20px;">Set Month</button>
+                </div>
+            </div>
+            
+            <div id="all-payments-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn-all-payments close-btn">&times;</span> 
+                    <h2>All Payments Summary</h2>
+                    <div id="all-payments-summary-content">
+                        <p>Loading...</p>
+                    </div>
+                    <button id="btn-export-payments" class="btn-primary" 
+                            style="width: 100%; margin-top: 20px;"
+                            onclick="window.print()">
+                        Export to PDF (Print)
+                    </button>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script> 
+    
+    <script src="payment_management.js"></script>
+    <script src="script.js"></script> 
+</body>
+</html>

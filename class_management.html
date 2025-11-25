@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Attendance | K1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="class_management.css"> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script> 
+</head>
+<body>
+    <div class="app-layout">
+        <header class="main-header">
+            <img src="logo.png" alt="M.H. Logo" class="header-logo-class">
+            <h1 class="header-title" id="class-header-title">Class Management: ምድብ ቂርቆስ ፩ (K1)</h1>
+            <div class="header-actions">
+                <button id="back-to-dashboard-btn" class="btn-dashboard">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+                </button>
+                <div class="language-toggle-class">
+                    <span id="lang-en-class" class="active">English</span> | <span id="lang-am-class">አማርኛ</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            
+            <div id="daily-attendance-container">
+                <div class="date-navigation-bar" id="daily-nav-bar">
+                    <button class="nav-btn" id="prev-session"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+                    <div class="date-display-container">
+                        <span id="current-date-gregorian">October 23, 2025</span>
+                        <button id="open-calendar-modal" class="date-picker-btn btn-secondary"><i class="fa-solid fa-calendar-days"></i> Change Date</button>
+                    </div>
+                    <button class="nav-btn" id="next-session">Next <i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+
+                <div class="action-bar">
+                    <div class="search-container">
+                        <input type="text" id="student-search" placeholder="Search by ID or Name...">
+                    </div>
+                    <div class="action-buttons">
+                        <button id="btn-toggle-daily-summary" class="btn-tertiary"><i class="fa-solid fa-list-ol"></i> View Attendance Summary</button>
+                        <button id="btn-mark-all-present" class="btn-secondary">Mark All Present</button>
+                        <button id="btn-mark-all-absent" class="btn-secondary">Mark All Absent</button>
+                        <button id="open-add-student-modal" class="btn-primary"><i class="fa-solid fa-user-plus"></i> Add Student</button>
+                    </div>
+                </div>
+
+                <div class="attendance-table-container">
+                    <table id="attendance-table">
+                        <thead>
+                            <tr>
+                                <th id="th-id">Student ID</th>
+                                <th id="th-name">Student Name</th>
+                                <th id="th-phone">Student Phone</th>
+                                <th id="th-attendance">Attendance (Present/Absent)</th>
+                                <th id="th-actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-list">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            
+            <div id="summary-table-container" style="display: none;">
+                <h2 class="summary-title">Attendance Summary <span id="summary-date-range"></span></h2>
+                
+                <div class="summary-toolbar">
+                    <button id="btn-toggle-summary-daily" class="btn-tertiary"><i class="fa-solid fa-calendar-day"></i> View Daily Attendance</button>
+                    <button id="btn-view-analytics-from-summary" class="btn-tertiary"><i class="fa-solid fa-chart-bar"></i> View Analytics</button>
+                    <button id="btn-select-range" class="btn-secondary"><i class="fa-solid fa-calendar-alt"></i> Select Date Range</button>
+                    <button id="btn-export-pdf" class="btn-primary"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
+                </div>
+
+                <div class="summary-table-wrapper">
+                    <table id="summary-table">
+                        <thead>
+                            <tr><th>No attendance records found.</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            
+            <div id="analytics-container" style="display: none;">
+                <h2 class="analytics-title">Attendance Analytics</h2>
+                
+                <div class="summary-toolbar">
+                    <button id="btn-toggle-analytics-daily" class="btn-tertiary"><i class="fa-solid fa-calendar-day"></i> View Daily Attendance</button>
+                    <button id="btn-toggle-analytics-summary" class="btn-tertiary"><i class="fa-solid fa-list-ol"></i> View Attendance Summary</button>
+                    <button id="btn-refresh-analytics" class="btn-secondary"><i class="fa-solid fa-sync"></i> Recalculate</button>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card metric-card">
+                        <h3 id="h3-overall-rate">Overall Class Attendance Rate</h3>
+                        <p class="big-metric" id="overall-rate">--%</p>
+                    </div>
+                    
+                    <div class="analytics-card student-ranking-card">
+                        <h3 id="h3-top-present">Top 3 Most Present Students</h3>
+                        <ul id="top-present-list" class="ranking-list">
+                            <li>--</li>
+                        </ul>
+                    </div>
+
+                    <div class="analytics-card student-ranking-card">
+                        <h3 id="h3-top-absent">Top 3 Students Needing Intervention (Most Absent)</h3>
+                        <ul id="top-absent-list" class="ranking-list">
+                            <li>--</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="analytics-card chart-card">
+                        <h3 id="h3-trend">Attendance Trend Over Time (P% per Session)</h3>
+                        <div id="attendance-trend-placeholder">
+                            [Chart visualization area - Placeholder for external library integration (e.g., Chart.js)]
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="add-student-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn-add-student close-btn">&times;</span> 
+                    <h2 id="modal-add-student-title">Add New Student</h2>
+                    <form id="add-student-form">
+                        <div class="input-group">
+                            <label for="new-student-id" id="label-student-id">Student ID</label>
+                            <input type="text" id="new-student-id" name="studentId" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="new-student-name" id="label-student-name">Student Name</label>
+                            <input type="text" id="new-student-name" name="studentName" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="new-student-phone" id="label-student-phone">Student Phone</label>
+                            <input type="tel" id="new-student-phone" name="studentPhone" required>
+                        </div>
+                        <button type="submit" class="btn-primary" id="btn-save-student">Save Student</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="edit-student-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn-edit-student close-btn">&times;</span>
+                    <h2>Edit Student</h2>
+                    <form id="edit-student-form">
+                        <input type="hidden" id="edit-original-id">
+                        <div class="input-group">
+                            <label for="edit-student-id">Student ID</label>
+                            <input type="text" id="edit-student-id" name="studentId" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="edit-student-name">Student Name</label>
+                            <input type="text" id="edit-student-name" name="studentName" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="edit-student-phone">Student Phone</label>
+                            <input type="tel" id="edit-student-phone" name="studentPhone" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="calendar-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn-calendar close-btn">&times;</span> 
+                    <h2>Select Date (Gregorian Calendar)</h2>
+                    <input type="date" id="gc-date-picker" class="date-input-gc">
+                    <button id="btn-select-date" class="btn-primary" style="margin-top: 20px;">Set Date</button>
+                </div>
+            </div>
+            
+            <div id="range-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn-range close-btn">&times;</span> 
+                    <h2>Select Summary Date Range</h2>
+                    <div class="input-group">
+                        <label for="start-date-picker">Start Date:</label>
+                        <input type="date" id="start-date-picker" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="end-date-picker">End Date:</label>
+                        <input type="date" id="end-date-picker" required>
+                    </div>
+                    <button id="btn-show-summary" class="btn-primary" style="width: 100%;">Show Summary</button>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="class_management.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
