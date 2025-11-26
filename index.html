@@ -1,157 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.H. Sunday School - Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>M.H. Sunday School - Login</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="login-container">
+            <div class="branding-panel">
+                <div class="logo-area">
+                    <img src="logo.png" alt="M.H. Logo" class="logo" />
 
-    <div class="login-container">
-        
-        <div class="branding-panel">
-            <div class="logo-area">
-                <img src="logo.png" alt="M.H. Logo" class="logo">
-                
-                <div class="name-block">
-                    <h1 class="system-name">M.H. Sunday School Attendance Control</h1>
-                    <h2 class="amharic-name">የመሠረተ ሕይወት ሰንበት ት/ቤት የተማሪዎች ክትትል</h2>
+                    <div class="name-block">
+                        <h1 class="system-name">
+                            M.H. Sunday School Attendance Control
+                        </h1>
+                        <h2 class="amharic-name">
+                            የመሠረተ ሕይወት ሰንበት ት/ቤት የተማሪዎች ክትትል
+                        </h2>
+                    </div>
                 </div>
-            </div>
-            <p class="slogan">Attendance Management System</p>
-        </div>
-        
-        <div class="login-form-panel">
-            <div class="form-header">
-                <div class="language-toggle">
-                    <span id="lang-en" class="active">English</span> | <span id="lang-am">አማርኛ</span>
-                </div>
-                <h2>Login to Your Account</h2>
+                <p class="slogan">Attendance Management System</p>
             </div>
 
-            <form id="loginForm">
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                
-                <div class="remember-me">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember me</label>
+            <div class="login-form-panel">
+                <div class="form-header">
+                    <div class="language-toggle">
+                        <span id="lang-en" class="active">English</span> |
+                        <span id="lang-am">አማርኛ</span>
+                    </div>
+                    <h2>Login to Your Account</h2>
                 </div>
 
-                <button type="submit" class="btn-primary" id="button-login">LOGIN</button>
-            </form>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            required
+                        />
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                        />
+                    </div>
 
-            <p class="copyright">&copy; 2025 M.H. Sunday School. All rights reserved.</p>
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember" />
+                        <label for="remember">Remember me</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="button-login">
+                        LOGIN
+                    </button>
+                </form>
+
+                <p class="copyright">
+                    &copy; 2025 M.H. Sunday School. All rights reserved.
+                </p>
+            </div>
         </div>
-        
-    </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Configuration for all user roles, their visible DASHBOARD CARDS, and their allowed PAYMENT CLASS IDs
-            const allClassIDs = ['K1', 'K2', 'K3', 'S1', 'S2', 'E', 'W1', 'W2', 'BS', 'SS'];
-            
-            const userConfig = {
-                // Owner: Full Access
-                "mhssa012122": { 
-                    role: "owner", 
-                    card_ids: ["infants-division", "juniors-division", "youth-division", "campus-division", "payment-division"],
-                    class_ids: allClassIDs 
-                },
-                // Second Admin: Full Access
-                "mhssa": { 
-                    role: "admin", 
-                    card_ids: ["infants-division", "juniors-division", "youth-division", "campus-division", "payment-division"],
-                    class_ids: allClassIDs
-                },
-                
-                // Division Admins: Class-specific Access + Payment card visible
-                "kirkos3": { // Infants Division Admin
-                    role: "infants-admin", 
-                    card_ids: ["infants-division", "payment-division"],
-                    class_ids: ['K1', 'K2', 'K3'] 
-                },      
-                "samuel3": { // Juniors Division Admin
-                    role: "juniors-admin", 
-                    card_ids: ["juniors-division", "payment-division"],
-                    class_ids: ['S1', 'S2', 'E'] 
-                },     
-                "yared2": { // Youth Division Admin
-                    role: "youth-admin", 
-                    card_ids: ["youth-division", "payment-division"],
-                    class_ids: ['W1', 'W2']
-                },         
-                "gebi2": { // Campus Ministry Admin
-                    role: "campus-admin", 
-                    card_ids: ["campus-division", "payment-division"],
-                    class_ids: ['BS', 'SS']
-                }          
-            };
-            
-            // --- NEW/FIXED: REMEMBER ME PRE-FILL ---
-            const rememberedUsername = localStorage.getItem('rememberedUsername');
-            const rememberedPassword = localStorage.getItem('rememberedPassword');
 
-            if (rememberedUsername && rememberedPassword) {
-                document.getElementById('username').value = rememberedUsername;
-                document.getElementById('password').value = rememberedPassword;
-                document.getElementById('remember').checked = true;
-            }
-            // ---------------------------------
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // Configuration for all user roles, their visible DASHBOARD CARDS, and their allowed PAYMENT CLASS IDs
+                const allClassIDs = [
+                    "K1",
+                    "K2",
+                    "K3",
+                    "S1",
+                    "S2",
+                    "E",
+                    "W1",
+                    "W2",
+                    "BS",
+                    "SS",
+                ];
 
-            const loginForm = document.getElementById('loginForm');
-            
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+                const userConfig = {
+                    // Owner: Full Access
+                    mhssa012122: {
+                        role: "owner",
+                        card_ids: [
+                            "infants-division",
+                            "juniors-division",
+                            "youth-division",
+                            "campus-division",
+                            "payment-division",
+                        ],
+                        class_ids: allClassIDs,
+                    },
+                    // Second Admin: Full Access
+                    mhssa: {
+                        role: "admin",
+                        card_ids: [
+                            "infants-division",
+                            "juniors-division",
+                            "youth-division",
+                            "campus-division",
+                            "payment-division",
+                        ],
+                        class_ids: allClassIDs,
+                    },
 
-                const usernameInput = document.getElementById('username').value.trim();
-                const passwordInput = document.getElementById('password').value.trim();
-                const rememberMeCheckbox = document.getElementById('remember');
-                
-                // 1. Check for the required username
-                if (usernameInput !== 'mhssa') {
-                    alert("Invalid Username. Please use 'mhssa'.");
-                    return;
+                    // Division Admins: Class-specific Access + Payment card visible
+                    kirkos3: {
+                        // Infants Division Admin
+                        role: "infants-admin",
+                        card_ids: ["infants-division", "payment-division"],
+                        class_ids: ["K1", "K2", "K3"],
+                    },
+                    samuel3: {
+                        // Juniors Division Admin
+                        role: "juniors-admin",
+                        card_ids: ["juniors-division", "payment-division"],
+                        class_ids: ["S1", "S2", "E"],
+                    },
+                    yared2: {
+                        // Youth Division Admin
+                        role: "youth-admin",
+                        card_ids: ["youth-division", "payment-division"],
+                        class_ids: ["W1", "W2"],
+                    },
+                    gebi2: {
+                        // Campus Ministry Admin
+                        role: "campus-admin",
+                        card_ids: ["campus-division", "payment-division"],
+                        class_ids: ["BS", "SS"],
+                    },
+                };
+
+                // --- NEW/FIXED: REMEMBER ME PRE-FILL ---
+                const rememberedUsername =
+                    localStorage.getItem("rememberedUsername");
+                const rememberedPassword =
+                    localStorage.getItem("rememberedPassword");
+
+                if (rememberedUsername && rememberedPassword) {
+                    document.getElementById("username").value =
+                        rememberedUsername;
+                    document.getElementById("password").value =
+                        rememberedPassword;
+                    document.getElementById("remember").checked = true;
                 }
-                
-                const user = userConfig[passwordInput];
+                // ---------------------------------
 
-                if (user) {
-                    // 2. SUCCESS: Store the user's role and allowed class IDs
-                    localStorage.setItem('userRole', user.role);
-                    localStorage.setItem('allowedDivisions', JSON.stringify(user.card_ids)); 
-                    localStorage.setItem('allowedPaymentClasses', JSON.stringify(user.class_ids)); 
-                    
-                    // --- NEW/FIXED: REMEMBER ME SAVE LOGIC ---
-                    if (rememberMeCheckbox.checked) {
-                        localStorage.setItem('rememberedUsername', usernameInput);
-                        localStorage.setItem('rememberedPassword', passwordInput); 
-                    } else {
-                        // Clear saved credentials if the box is unchecked
-                        localStorage.removeItem('rememberedUsername');
-                        localStorage.removeItem('rememberedPassword');
+                const loginForm = document.getElementById("loginForm");
+
+                loginForm.addEventListener("submit", function (e) {
+                    e.preventDefault();
+
+                    const usernameInput = document
+                        .getElementById("username")
+                        .value.trim();
+                    const passwordInput = document
+                        .getElementById("password")
+                        .value.trim();
+                    const rememberMeCheckbox =
+                        document.getElementById("remember");
+
+                    // 1. Check for the required username
+                    if (usernameInput !== "mhssa") {
+                        alert("Invalid Username. Please use 'mhssa'.");
+                        return;
                     }
-                    // ------------------------------------
-                    
-                    // 3. Redirect to the dashboard
-                    window.location.href = 'dashboard.html';
-                } else {
-                    // 4. FAILURE
-                    alert("Invalid Password.");
-                }
+
+                    const user = userConfig[passwordInput];
+
+                    if (user) {
+                        // 2. SUCCESS: Store the user's role and allowed class IDs
+                        localStorage.setItem("userRole", user.role);
+                        localStorage.setItem(
+                            "allowedDivisions",
+                            JSON.stringify(user.card_ids)
+                        );
+                        localStorage.setItem(
+                            "allowedPaymentClasses",
+                            JSON.stringify(user.class_ids)
+                        );
+
+                        // --- NEW/FIXED: REMEMBER ME SAVE LOGIC ---
+                        if (rememberMeCheckbox.checked) {
+                            localStorage.setItem(
+                                "rememberedUsername",
+                                usernameInput
+                            );
+                            localStorage.setItem(
+                                "rememberedPassword",
+                                passwordInput
+                            );
+                        } else {
+                            // Clear saved credentials if the box is unchecked
+                            localStorage.removeItem("rememberedUsername");
+                            localStorage.removeItem("rememberedPassword");
+                        }
+                        // ------------------------------------
+
+                        // 3. Redirect to the dashboard
+                        window.location.href = "dashboard.html";
+                    } else {
+                        // 4. FAILURE
+                        alert("Invalid Password.");
+                    }
+                });
+
+                // NOTE: The language toggle script from the original `script.js` would go here if needed.
             });
-            
-            // NOTE: The language toggle script from the original `script.js` would go here if needed.
-        });
-    </script>
-</body>
+        </script>
+    </body>
 </html>
